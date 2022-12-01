@@ -23,6 +23,9 @@
 #include "iot/scheduler.h"
 #include <prom.h>  //add by edgego
 
+extern prom_counter_t *autoevent_counter;  //add by edgego
+extern prom_gauge_t *autoevent_gauge;  //add by edgego
+
 struct devsdk_callbacks
 {
   devsdk_initialize init;
