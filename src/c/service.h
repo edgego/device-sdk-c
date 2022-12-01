@@ -21,6 +21,7 @@
 #include "rest-server.h"
 #include "iot/threadpool.h"
 #include "iot/scheduler.h"
+#include <prom.h>  //add by edgego
 
 struct devsdk_callbacks
 {
