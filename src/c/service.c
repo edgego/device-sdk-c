@@ -1014,6 +1014,22 @@ void devsdk_service_start (devsdk_service_t *svc, iot_data_t *driverdfls, devsdk
     iot_log_info (svc->logger, "Service started in: %dms", iot_time_msecs() - svc->starttime);
     iot_log_info (svc->logger, "Listening on port: %d", svc->config.service.port);
   }
+  
+  // add by edgego
+  iot_log_info (svc->logger, "Initializing prometheus metrics ...");
+  //Initialize prometheus metrics
+  autoevent_pmetric_registry();
+  iot_log_info (svc->logger, "Prometheus metrics registried...");
+  struct MHD_Daemon *prometheusDaemon = promhttp_start_daemon(MHD_USE_SELECT_INTERNALLY, 9090, NULL, NULL);
+  if (prometheusDaemon == NULL)
+  {
+      iot_log_error (svc->logger, "Unable to start prometheus daemon");
+      return;
+  }
+  else
+  {
+      iot_log_info (svc->logger, "Prometheus daemon listening on 9090");
+  }//end add by edgego
 }
 
 void devsdk_register_http_handler
