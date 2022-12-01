@@ -99,4 +99,6 @@ devsdk_commandresult *devsdk_commandresult_dup (const devsdk_commandresult *res,
 
 bool devsdk_commandresult_equal (const devsdk_commandresult *lhs, const devsdk_commandresult *rhs, int n);
 
+char *edgex_value_tostring (const iot_data_t *value);//add by edgego
+
 #endif
